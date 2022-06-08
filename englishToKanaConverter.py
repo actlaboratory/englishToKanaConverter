@@ -52,11 +52,11 @@ class EnglishToKanaConverter:
                 self.log.debug(f"found: {s[s.rfind(' ', 0, cnt) + 1:cnt]}{s[cnt:s.find(' ', cnt)]}")
                 s = s[:cnt] + " " + s[cnt:]
                 self.log.debug(f"converted: {s[s.rfind(' ', 0, cnt) + 1:cnt]}{s[cnt:s.find(' ', cnt + 1)]}")
+        self.log.debug("done")
         return s
 
     def _engToKana(self, s: str) -> str:
         self.log.debug("engToKana")
-        self.log.debug(f"in: {s}")
         # 英語がカナになった結果の格納用
         result = ""
         while len(s.strip()) > 0:
@@ -124,7 +124,6 @@ class EnglishToKanaConverter:
                 self.log.debug(f"result: {match.group()} -> {tmpKana}")
                 result += tmpKana
                 s = s[match.end():]
-        self.log.debug(f"out: {result}")
         return result
 
     def _romanToKana(self, s: str) -> str:
@@ -133,6 +132,26 @@ class EnglishToKanaConverter:
 
     def _trimWhitespaceBetweenUpperCase(self, s: str) -> str:
         self.log.debug("trimWhitespaceBetweenUpperCase")
+        self.log.debug("searching for upper case")
+        # 大文字を探す
+        result = re.finditer("[A-Z]+", s)
+        result = list(result)
+        # 文字の挿入時にインデックスが狂わないように後ろから処理する
+        result.reverse()
+        for match in result:
+            self.log.debug(f"match: {match.group()}")
+            length = match.end() - match.start()
+            self.log.debug(f"length: {length}")
+            if length > 1:
+                # 連続する大文字は無視
+                self.log.debug("skipped")
+                continue
+            index = match.start()
+            if s[index - 1] == " ":
+                self.log.debug(f"found: {s[s.rfind(' ', 0, index) + 1:index]}{s[index:s.find(' ', index)]}")
+                s = s[:index - 1] + s[index:]
+                self.log.debug(f"converted: {s[s.rfind(' ', 0, index) + 1:index]}{s[index:s.find(' ', index)]}")
+        self.log.debug("done")
         return s
 
     def _alphaToSpell(self, s: str) -> str:
