@@ -175,10 +175,12 @@ class EnglishToKanaConverter:
         return s
 
     def process(self, s: str) -> str:
+        self.log.debug(f"in: {s}")
         s = self._zenToHan(s)
         s = self._splitUpperCase(s)
         s = self._engToKana(s)
         s = self._romanToKana(s)
         s = self._trimWhitespaceBetweenUpperCase(s)
         s = self._alphaToSpell(s)
+        self.log.debug(f"out: {s}")
         return s
