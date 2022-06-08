@@ -4,7 +4,7 @@ import os
 import re
 import traceback
 
-from dictionaries import *
+from .dictionaries import *
 
 
 # 大文字が連続する際にそれぞれを独立した単語として扱う最大数
