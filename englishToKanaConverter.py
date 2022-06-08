@@ -26,6 +26,7 @@ class EnglishToKanaConverter:
         self._words = WORDS
         self._phrases = PHRASES
         self._tails = SUFFIX
+        self._spell = SPELL
         self.log.info("ready!")
 
     def _zenToHan(self, s: str) -> str:
@@ -156,6 +157,21 @@ class EnglishToKanaConverter:
 
     def _alphaToSpell(self, s: str) -> str:
         self.log.debug("alphaToSpell")
+        # アルファベットを探す
+        self.log.debug("searching for alphabets")
+        result = re.finditer("[a-zA-Z]", s)
+        result = list(result)
+        # 文字の挿入時にインデックスが狂わないように後ろから処理する
+        result.reverse()
+        for match in result:
+            char = match.group()
+            self.log.debug(f"found: {char}")
+            kana = self._spell.get(char.upper())
+            if kana is None:
+                self.log.error(f"unknown character: {char}")
+            self.log.debug(f"converted: {char} -> {kana}")
+            s = s[:match.start()] + kana + s[match.end():]
+        self.log.debug("done")
         return s
 
     def process(self, s: str) -> str:
