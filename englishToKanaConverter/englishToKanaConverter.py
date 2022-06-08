@@ -152,7 +152,7 @@ class EnglishToKanaConverter:
                 self.log.debug("skipped")
                 continue
             index = match.start()
-            if s[index - 1] == " ":
+            if index > 0 and s[index - 1] == " ":
                 self.log.debug(f"found: {s[s.rfind(' ', 0, index) + 1:index]}{s[index:s.find(' ', index)]}")
                 s = s[:index - 1] + s[index:]
                 self.log.debug(f"converted: {s[s.rfind(' ', 0, index) + 1:index]}{s[index:s.find(' ', index)]}")
