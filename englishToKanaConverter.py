@@ -28,6 +28,10 @@ class EnglishToKanaConverter:
         self._tails = SUFFIX
         self.log.info("ready!")
 
+    def _zenToHan(self, s: str) -> str:
+        self.log.debug("zenToHan")
+        return s
+
     def _splitUpperCase(self, s: str) -> str:
         self.log.debug("splitUpperCase")
         self.log.debug("searching for upper case")
@@ -37,8 +41,12 @@ class EnglishToKanaConverter:
         # 文字の挿入時にインデックスが狂わないように後ろから処理する
         result.reverse()
         for match in result:
-            if match.end(1) - 1 > match.start(1) + UPPER_MAX - 1:
+            self.log.debug(f"match: {match.group(1)}")
+            length = match.end(1) - match.start(1)
+            self.log.debug(f"length: {length}")
+            if length > UPPER_MAX:
                 # 一定以上長い大文字列は無視
+                self.log.debug("skipped")
                 continue
             for cnt in range(match.end(1) - 1, match.start(1) - 1, -1):
                 self.log.debug(f"found: {s[s.rfind(' ', 0, cnt) + 1:cnt]}{s[cnt:s.find(' ', cnt)]}")
@@ -119,7 +127,23 @@ class EnglishToKanaConverter:
         self.log.debug(f"out: {result}")
         return result
 
+    def _romanToKana(self, s: str) -> str:
+        self.log.debug("romanToKana")
+        return s
+
+    def _trimWhitespaceBetweenUpperCase(self, s: str) -> str:
+        self.log.debug("trimWhitespaceBetweenUpperCase")
+        return s
+
+    def _alphaToSpell(self, s: str) -> str:
+        self.log.debug("alphaToSpell")
+        return s
+
     def process(self, s: str) -> str:
+        s = self._zenToHan(s)
         s = self._splitUpperCase(s)
         s = self._engToKana(s)
+        s = self._romanToKana(s)
+        s = self._trimWhitespaceBetweenUpperCase(s)
+        s = self._alphaToSpell(s)
         return s
