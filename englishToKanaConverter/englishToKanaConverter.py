@@ -62,7 +62,7 @@ class EnglishToKanaConverter:
         self.log.debug(f"in: {s}")
         # 英語がカナになった結果の格納用
         result = ""
-        while len(s.strip()) > 0:
+        while len(s) > 0:
             self.log.debug(f"processing: {s}")
             match = re.search("[a-zA-Z]+", s)
             if match is None:
