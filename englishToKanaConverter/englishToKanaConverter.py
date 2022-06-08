@@ -176,7 +176,6 @@ class EnglishToKanaConverter:
                 self.log.error(f"unknown character: {char}")
             self.log.debug(f"converted: {char} -> {kana}")
             s = s[:match.start()] + kana + s[match.end():]
-        self.log.debug("done")
         self.log.debug(f"out: {s}")
         return s
 
