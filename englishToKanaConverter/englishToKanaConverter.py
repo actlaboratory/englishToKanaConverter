@@ -27,10 +27,14 @@ class EnglishToKanaConverter:
         self._phrases = PHRASES
         self._tails = SUFFIX
         self._spell = SPELL
+        self._zenhan = ZENHAN
         self.log.info("ready!")
 
     def _zenToHan(self, s: str) -> str:
         self.log.debug("zenToHan")
+        self.log.debug(f"in: {s}")
+        s = s.translate(str.maketrans(self._zenhan))
+        self.log.debug(f"out: {s}")
         return s
 
     def _splitUpperCase(self, s: str) -> str:
