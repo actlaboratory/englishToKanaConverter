@@ -67,7 +67,6 @@ class EnglishToKanaConverter:
         # 英語がカナになった結果の格納用
         result = ""
         while len(s) > 0:
-            self.log.debug(f"processing: {s}")
             match = re.search("[a-zA-Z]+", s)
             if match is None:
                 # 残りは日本語か記号
@@ -88,7 +87,7 @@ class EnglishToKanaConverter:
                 continue
             # 複合語や接尾語も考慮しつつ変換する
             self.log.debug("check started")
-            # 変換できない単語が出てきたらTrue
+            # 変換できない単語が出てきたらTrue、変換できればFalse
             failedFlag = False
             # カナを一時保存
             tmpKana = ""
@@ -105,15 +104,15 @@ class EnglishToKanaConverter:
                         tmpEng = tmpEng[cnt:]
                         self.log.debug(f"current kana: {tmpKana}, current eng: {tmpEng}")
                         # 接尾語の確認
-                        for tail in self._tails:
-                            if tmpEng.upper().startswith(tail):
-                                # 接尾語が見つかった
-                                self.log.debug(f"tail {tail} found")
-                                tmpKana += self._tails[tail]
-                                tmpEng = tmpEng[len(tail):]
-                                self.log.debug(f"current kana: {tmpKana}, current eng: {tmpEng}")
-                                # これ以上見なくて良い
-                                break
+                        tail = self._tails.get(tmpEng.upper())
+                        if tail:
+                            # 接尾語が見つかった
+                            self.log.debug(f"tail {tmpEng} found")
+                            tmpKana += tail
+                            tmpEng = ""
+                            self.log.debug(f"current kana: {tmpKana}, current eng: {tmpEng}")
+                            # これ以上見なくて良い
+                            break
                         # これ以上文字数を減らしてみる必要はない
                         break
                 if val is None:
