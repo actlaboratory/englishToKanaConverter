@@ -3,6 +3,7 @@ import logging
 import os
 import re
 import traceback
+from typing import Tuple
 
 from .dictionaries import *
 
@@ -86,52 +87,56 @@ class EnglishToKanaConverter:
                 s = s[match.end():]
                 continue
             # 複合語や接尾語も考慮しつつ変換する
-            self.log.debug("check started")
-            # 変換できない単語が出てきたらTrue、変換できればFalse
-            failedFlag = False
-            # カナを一時保存
-            tmpKana = ""
-            # 変換できた文字はtmpEngから削除していく
-            while len(tmpEng) > 0:
-                # 文字数を1文字ずつ減らしながら辞書の単語と合致するものを探す
-                for cnt in range(len(tmpEng), 0, -1):
-                    self.log.debug(f"checking: {tmpEng[:cnt]}")
-                    val = self._phrases.get(tmpEng.upper()[:cnt])
-                    if val is not None:
-                        # 変換できた
-                        self.log.debug(f"found: {tmpEng[:cnt]} -> {val}")
-                        tmpKana += val
-                        tmpEng = tmpEng[cnt:]
-                        self.log.debug(f"current kana: {tmpKana}, current eng: {tmpEng}")
-                        # 接尾語の確認
-                        tail = self._tails.get(tmpEng.upper())
-                        if tail:
-                            # 接尾語が見つかった
-                            self.log.debug(f"tail {tmpEng} found")
-                            tmpKana += tail
-                            tmpEng = ""
-                            self.log.debug(f"current kana: {tmpKana}, current eng: {tmpEng}")
-                            # これ以上見なくて良い
-                            break
-                        # これ以上文字数を減らしてみる必要はない
-                        break
-                if val is None:
-                    # 変換に失敗した
-                    self.log.debug(f"failed: {tmpEng}")
-                    failedFlag = True
-                    break
-            if failedFlag:
-                # 変換できなかったため英語のまま
-                self.log.debug(f"not converted: {match.group()}")
-                result += match.group()
-                s = s[match.end():]
-            else:
-                # 変換できた
-                self.log.debug(f"result: {match.group()} -> {tmpKana}")
-                result += tmpKana
-                s = s[match.end():]
+            success, converted, remaining = self._partsToKana(match.group())
+            result += converted
+            s = s[match.end():]
         self.log.debug(f"out: {result}")
         return result
+
+    def _partsToKana(self, s: str) -> Tuple[bool, str, str]:
+        self.log.debug(f"partsToKana in: {s}")
+        # 変数の初期化
+        success = False
+        converted = ""
+        remaining = ""
+        # 文字数を減らしながら変換できそうな単語を探す
+        for cnt in range(len(s), 0, -1):
+            tmp = s[0:cnt]
+            self.log.debug(f"checking: {tmp}")
+            converted = self._phrases.get(tmp.upper(), "")
+            if converted == "":
+                # 変換できなかった
+                self.log.debug(f"not found: {tmp}")
+                success = False
+                continue
+            success = True
+            self.log.debug(f"found: {tmp} -> {converted}")
+            remaining = s[cnt:]
+            if remaining == "":
+                self.log.debug(f"partsToKana out: success={success}, converted={converted}, remaining={remaining}")
+                return success, converted, remaining
+            # 接尾語の確認
+            suffix = self._tails.get(remaining.upper(), "")
+            if suffix:
+                # 接尾語が見つかった
+                self.log.debug(f"suffix {remaining} -> {suffix}")
+                converted += suffix
+                self.log.debug(f"partsToKana out: success={success}, converted={converted}, remaining={''}")
+                return success, converted, ""
+            # 続きをチェック
+            success2, converted2, remaining2 = self._partsToKana(remaining)
+            if not success2:
+                # 変換できなかった
+                success = False
+                continue
+            self.log.debug(f"partsToKana out: success={success}, converted={converted + converted2}, remaining={remaining2}")
+            return success, converted + converted2, remaining2
+        # すべて変換できなかった
+        success = False
+        converted = s
+        remaining = ""
+        self.log.debug(f"partsToKana out: success={success}, converted={converted}, remaining={remaining}")
+        return success, converted, remaining
 
     def _romanToKana(self, s: str) -> str:
         self.log.debug("romanToKana")
