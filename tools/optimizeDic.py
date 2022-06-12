@@ -17,7 +17,7 @@ if __name__ == "__main__":
         prefix = text[:startIndex]
         oldData = json.loads(text[startIndex:])
         newData = {}
-        for key in sorted(oldData.keys()):
+        for key in sorted(oldData.keys(), key=str.lower):
             value = oldData[key]
             if not re.match("^[ァ-ヿ]+$", value):
                 print(f"変換先文字列にカタカナ以外の文字が含まれています。。対象文字列:{value}")
