@@ -124,7 +124,7 @@ class EnglishToKanaConverter:
         # 英語がカナになった結果の格納用
         result = ""
         while len(s) > 0:
-            match = re.search("[a-zA-Z]+", s)
+            match = re.search("[a-zA-Z']+", s)
             if match is None:
                 # 残りは日本語か記号
                 result += s
