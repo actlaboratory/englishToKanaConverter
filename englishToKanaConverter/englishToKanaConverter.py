@@ -210,9 +210,9 @@ class EnglishToKanaConverter:
                             break
                     if not foundFlag:
                         # 変換できなかった
-                        result += match.group()
+                        tmpResult = match.group()
                         s = s[match.end():]
-                        continue
+                        break
             result += tmpResult
             s = s[match.end():]
         self.log.debug(f"romanToKana out: {result}")
