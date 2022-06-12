@@ -5,4 +5,3 @@ from .roman import ROMAN
 from .spell import SPELL
 from .suffix import SUFFIX
 from .words import WORDS
-from .zenhan import ZENHAN
