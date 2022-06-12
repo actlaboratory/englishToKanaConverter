@@ -10,6 +10,17 @@ from .dictionaries import *
 
 # 大文字が連続する際にそれぞれを独立した単語として扱う最大数
 UPPER_MAX = 3
+# ローマ字読みを試みる最小文字数
+ROMAN_MIN = 3
+# ローマ字読みで、連続しても促音として変換しない文字
+SOKUON_IGNORE = (
+    "A",
+    "I",
+    "U",
+    "E",
+    "O",
+    "N",
+)
 
 
 class EnglishToKanaConverter:
@@ -137,7 +148,81 @@ class EnglishToKanaConverter:
 
     def _romanToKana(self, s: str) -> str:
         self.log.debug(f"romanToKana in: {s}")
-        return s
+        # 結果の格納用
+        result = ""
+        while len(s) > 0:
+            match = re.search("[a-zA-Z]+", s)
+            if match is None:
+                # 残りは日本語か記号
+                result += s
+                break
+            # 英語が出てくるまででは処理不要
+            result += s[:match.start()]
+            self.log.debug(f"match: {match.group()}")
+            # 変換元の文字列（辞書と合わせるためにすべて大文字）
+            word = match.group().upper()
+            if len(word) < ROMAN_MIN:
+                # 短い単語は変換しない
+                self.log.debug(f"skipped: {match.group()}")
+                result += match.group()
+                s = s[match.end():]
+                continue
+            # 変換結果の一時保存用
+            tmpResult = ""
+            index = 0
+            while index != len(word):
+                # 促音の判定
+                # 次に文字があれば
+                if index != len(word) - 1:
+                    phrase = word[index:index + 2]
+                    if phrase[0] == phrase[1] and phrase[0] not in SOKUON_IGNORE:
+                        # 促音が見つかった
+                        self.log.debug(f"sokuon {phrase} found")
+                        tmpResult += "ッ"
+                        self.log.debug(f"tmpResult: {tmpResult}")
+                        index += 1
+                        continue
+                found = ROMAN.get(word[index], "")
+                if found != "":
+                    self.log.debug(f"found: {word[index]} -> {found}")
+                    # 最後の文字ならば
+                    if index == len(word) - 1:
+                        tmpResult += found
+                        index = len(word)
+                        continue
+                    nextIndex = index
+                    for i in range(index + 2, len(word) + 1):
+                        self.log.debug("searching for: {word[index: i]}")
+                        newFound = ROMAN.get(word[index: i], "")
+                        if newFound == "":
+                            nextIndex = i - 1
+                            break
+                        self.log.debug(f"found: {word[index: i]} -> {newFound}")
+                        nextIndex = i
+                        found = newFound
+                    index = nextIndex
+                    tmpResult += found
+                    continue
+                else:
+                    foundFlag = False
+                    for i in range(len(word), index + 1, -1):
+                        newFound = ROMAN.get(word[index:i], "")
+                        if newFound != "":
+                            self.log.debug(f"found: {word[index: i]} -> {newFound}")
+                            foundFlag = True
+                            index = i
+                            tmpResult += newFound
+                            break
+                    if not foundFlag:
+                        # 変換できなかった
+                        result += match.group()
+                        s = s[match.end():]
+                        continue
+            result += tmpResult
+            s = s[match.end():]
+        self.log.debug(f"romanToKana out: {result}")
+        return result
+
 
     def _trimWhitespaceBetweenUpperCase(self, s: str) -> str:
         self.log.debug(f"trimWhitespaceBetweenUpperCase in: {s}")
