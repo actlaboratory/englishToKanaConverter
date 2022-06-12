@@ -218,7 +218,6 @@ class EnglishToKanaConverter:
         self.log.debug(f"romanToKana out: {result}")
         return result
 
-
     def _trimWhitespaceBetweenUpperCase(self, s: str) -> str:
         self.log.debug(f"trimWhitespaceBetweenUpperCase in: {s}")
         self.log.debug("searching for upper case")
