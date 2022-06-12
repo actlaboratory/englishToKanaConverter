@@ -211,7 +211,6 @@ class EnglishToKanaConverter:
                     if not foundFlag:
                         # 変換できなかった
                         tmpResult = match.group()
-                        s = s[match.end():]
                         break
             result += tmpResult
             s = s[match.end():]
