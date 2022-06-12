@@ -192,9 +192,10 @@ class EnglishToKanaConverter:
                         continue
                     nextIndex = index
                     for i in range(index + 2, len(word) + 1):
-                        self.log.debug("searching for: {word[index: i]}")
+                        self.log.debug(f"searching for: {word[index: i]}")
                         newFound = ROMAN.get(word[index: i], "")
                         if newFound == "":
+                            self.log.debug(f"not found: {word[index: i]}")
                             nextIndex = i - 1
                             break
                         self.log.debug(f"found: {word[index: i]} -> {newFound}")
@@ -206,6 +207,7 @@ class EnglishToKanaConverter:
                 else:
                     foundFlag = False
                     for i in range(len(word), index + 1, -1):
+                        self.log.debug(f"searching for: {word[index: i]}")
                         newFound = ROMAN.get(word[index:i], "")
                         if newFound != "":
                             self.log.debug(f"found: {word[index: i]} -> {newFound}")
