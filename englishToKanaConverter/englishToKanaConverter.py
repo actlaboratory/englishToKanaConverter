@@ -5,7 +5,7 @@ import re
 import traceback
 from typing import Tuple
 
-from .dictionaries import *
+from . import dictionaries
 
 
 # 大文字が連続する際にそれぞれを独立した単語として扱う最大数
@@ -34,17 +34,10 @@ class EnglishToKanaConverter:
         self.log = logging.getLogger(__class__.__name__)
         self.log.setLevel(logging.DEBUG)
         self.log.addHandler(logHandler)
-        # 辞書準備
-        self._words = WORDS
-        self._phrases = PHRASES
-        self._tails = SUFFIX
-        self._spell = SPELL
-        self._zenhan = ZENHAN
-        self.log.info("ready!")
 
     def _zenToHan(self, s: str) -> str:
         self.log.debug(f"zenToHan in: {s}")
-        s = s.translate(str.maketrans(self._zenhan))
+        s = s.translate(str.maketrans(dictionaries.ZENHAN))
         self.log.debug(f"zenToHan out: {s}")
         return s
 
@@ -87,7 +80,7 @@ class EnglishToKanaConverter:
             # 英語を一時保存
             tmpEng = match.group()
             # 単独で存在すべき文字列と合致するか
-            val = self._words.get(match.group().upper())
+            val = dictionaries.WORDS.get(match.group().upper())
             if val is not None:
                 # 変換できた
                 self.log.debug(f"whole converted: {match.group()} -> {val}")
@@ -111,7 +104,7 @@ class EnglishToKanaConverter:
         for cnt in range(len(s), 0, -1):
             tmp = s[0:cnt]
             self.log.debug(f"checking: {tmp}")
-            converted = self._phrases.get(tmp.upper(), "")
+            converted = dictionaries.PHRASES.get(tmp.upper(), "")
             if converted == "":
                 # 変換できなかった
                 self.log.debug(f"not found: {tmp}")
@@ -124,7 +117,7 @@ class EnglishToKanaConverter:
                 self.log.debug(f"partsToKana out: success={success}, converted={converted}, remaining={remaining}")
                 return success, converted, remaining
             # 接尾語の確認
-            suffix = self._tails.get(remaining.upper(), "")
+            suffix = dictionaries.SUFFIX.get(remaining.upper(), "")
             if suffix:
                 # 接尾語が見つかった
                 self.log.debug(f"suffix {remaining} -> {suffix}")
@@ -182,7 +175,7 @@ class EnglishToKanaConverter:
                         self.log.debug(f"tmpResult: {tmpResult}")
                         index += 1
                         continue
-                found = ROMAN.get(word[index], "")
+                found = dictionaries.ROMAN.get(word[index], "")
                 if found != "":
                     self.log.debug(f"found: {word[index]} -> {found}")
                     # 最後の文字ならば
@@ -193,7 +186,7 @@ class EnglishToKanaConverter:
                     nextIndex = index
                     for i in range(index + 2, len(word) + 1):
                         self.log.debug(f"searching for: {word[index: i]}")
-                        newFound = ROMAN.get(word[index: i], "")
+                        newFound = dictionaries.ROMAN.get(word[index: i], "")
                         if newFound == "":
                             self.log.debug(f"not found: {word[index: i]}")
                             nextIndex = i - 1
@@ -208,7 +201,7 @@ class EnglishToKanaConverter:
                     foundFlag = False
                     for i in range(len(word), index + 1, -1):
                         self.log.debug(f"searching for: {word[index: i]}")
-                        newFound = ROMAN.get(word[index:i], "")
+                        newFound = dictionaries.ROMAN.get(word[index:i], "")
                         if newFound != "":
                             self.log.debug(f"found: {word[index: i]} -> {newFound}")
                             foundFlag = True
@@ -261,7 +254,7 @@ class EnglishToKanaConverter:
         for match in result:
             char = match.group()
             self.log.debug(f"found: {char}")
-            kana = self._spell.get(char.upper())
+            kana = dictionaries.SPELL.get(char.upper())
             if kana is None:
                 self.log.error(f"unknown character: {char}")
             self.log.debug(f"converted: {char} -> {kana}")
