@@ -10,6 +10,10 @@ from . import dictionaries
 
 # 大文字が連続する際にそれぞれを独立した単語として扱う最大数
 UPPER_MAX = 3
+# 読み下しが必要な大文字列
+UPPER_IGNORE = (
+    "FAX",
+)
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
 # ローマ字読みで、連続しても促音として変換しない文字
@@ -108,8 +112,8 @@ class EnglishToKanaConverter:
             self.log.debug(f"match: {match.group(1)}")
             length = match.end(1) - match.start(1)
             self.log.debug(f"length: {length}")
-            if length > UPPER_MAX:
-                # 一定以上長い大文字列は無視
+            if length > UPPER_MAX or match.group(1) in UPPER_IGNORE:
+                # 一定以上長い大文字列や、特定の大文字列は無視
                 self.log.debug("skipped")
                 continue
             for cnt in range(match.end(1) - 1, match.start(1) - 1, -1):
