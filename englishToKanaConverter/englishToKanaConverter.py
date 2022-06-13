@@ -13,6 +13,8 @@ UPPER_MAX = 3
 # 読み下しが必要な大文字列
 UPPER_IGNORE = (
     "FAX",
+    "ON",
+    "OFF",
 )
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
