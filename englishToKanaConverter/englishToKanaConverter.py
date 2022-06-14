@@ -89,13 +89,15 @@ ZENHAN_TABLE = {
 class EnglishToKanaConverter:
     def __init__(self, debug=False) -> None:
         # デバッグ用のログ出力
+        self.log = logging.getLogger(__class__.__name__)
         if debug:
             logHandler = logging.FileHandler(f"{os.path.splitext(__file__)[0]}.log", "w", "utf-8")
+            logHandler.setLevel(logging.DEBUG)
+            self.log.setLevel(logging.DEBUG)
         else:
             logHandler = logging.NullHandler()
-        logHandler.setLevel(logging.DEBUG)
-        self.log = logging.getLogger(__class__.__name__)
-        self.log.setLevel(logging.DEBUG)
+            logHandler.setLevel(logging.CRITICAL)
+            self.log.setLevel(logging.CRITICAL)
         self.log.addHandler(logHandler)
 
     def _zenToHan(self, s: str) -> str:
