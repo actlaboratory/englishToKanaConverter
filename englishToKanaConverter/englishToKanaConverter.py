@@ -17,6 +17,8 @@ UPPER_IGNORE = (
     "OFF",
     "WEB",
     "LAN",
+    "BES",
+    "OF",
 )
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
