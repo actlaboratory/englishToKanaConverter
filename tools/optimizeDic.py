@@ -15,6 +15,11 @@ if __name__ == "__main__":
             text = f.read()
         startIndex = text.find("{")
         prefix = text[:startIndex]
+        # 最後のエントリの後の','を削除
+        lastCommaIndex = text.rfind(",")
+        if text[lastCommaIndex + 1:].strip().startswith("}"):
+            text = text[:lastCommaIndex] + text[lastCommaIndex + 1:]
+            print("最後のエントリの後の','を削除しました。")
         oldData = json.loads(text[startIndex:])
         newData = {}
         for key in sorted(oldData.keys(), key=str.lower):
@@ -27,7 +32,9 @@ if __name__ == "__main__":
             if not re.match("^[A-Z']+$", key):
                 print(f"変換元文字列{key}には、半角大文字以外の文字が含まれています。")
             newData[key] = value
+        print(f"登録単語数: {len(newData)}")
         with open(path, "w", encoding="utf-8") as f:
             f.write(prefix)
             f.write(json.dumps(newData, ensure_ascii=False, indent="    "))
             f.write("\n")
+        print(f"{os.path.basename(path)}を保存しました。")
