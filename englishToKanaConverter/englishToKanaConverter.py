@@ -17,6 +17,8 @@ UPPER_IGNORE = (
     "OFF",
     "WEB",
     "LAN",
+    "WAN",
+    "GET",
     "BES",
     "OF",
 )
