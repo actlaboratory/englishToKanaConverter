@@ -1,7 +1,11 @@
+from fnmatch import translate
 import glob
 import json
 import os
 import re
+import sys
+
+from englishToKanaConverter.englishToKanaConverter import ZENHAN_TABLE
 
 
 if __name__ == "__main__":
@@ -25,12 +29,15 @@ if __name__ == "__main__":
         for key in sorted(oldData.keys(), key=str.lower):
             value = oldData[key]
             if not re.match("^[ァ-ヿ]+$", value):
-                print(f"変換先文字列にカタカナ以外の文字が含まれています。。対象文字列:{value}")
+                sys.stderr.write(f"変換先文字列{value}にカタカナ以外の文字が含まれています。\n")
             if not key.isupper():
                 print(f"変換元文字列{key}を大文字に変換しました。")
                 key = key.upper()
+            if re.search("[Ａ-Ｚ]", key):
+                print(f"変換元文字列{key}に含まれる全角アルファベットを半角に変換しました。")
+                key = key.translate(str.maketrans(ZENHAN_TABLE))
             if not re.match("^[A-Z']+$", key):
-                print(f"変換元文字列{key}には、半角大文字以外の文字が含まれています。")
+                sys.stderr.write(f"変換元文字列{key}には、半角大文字以外の文字が含まれています。\n")
             newData[key] = value
         print(f"登録単語数: {len(newData)}")
         with open(path, "w", encoding="utf-8") as f:
