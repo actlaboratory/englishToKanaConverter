@@ -1,7 +1,10 @@
+from fnmatch import translate
 import glob
 import json
 import os
 import re
+
+from englishToKanaConverter.englishToKanaConverter import ZENHAN_TABLE
 
 
 if __name__ == "__main__":
@@ -29,6 +32,9 @@ if __name__ == "__main__":
             if not key.isupper():
                 print(f"変換元文字列{key}を大文字に変換しました。")
                 key = key.upper()
+            if re.search("[Ａ-Ｚ]", key):
+                print(f"変換元文字列{key}に含まれる全角アルファベットを半角に変換しました。")
+                key = key.translate(str.maketrans(ZENHAN_TABLE))
             if not re.match("^[A-Z']+$", key):
                 print(f"変換元文字列{key}には、半角大文字以外の文字が含まれています。")
             newData[key] = value
