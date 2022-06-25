@@ -28,7 +28,7 @@ if __name__ == "__main__":
         for key in sorted(oldData.keys(), key=str.lower):
             value = oldData[key]
             if not re.match("^[ァ-ヿ]+$", value):
-                print(f"変換先文字列にカタカナ以外の文字が含まれています。。対象文字列:{value}")
+                print(f"変換先文字列{value}にカタカナ以外の文字が含まれています。")
             if not key.isupper():
                 print(f"変換元文字列{key}を大文字に変換しました。")
                 key = key.upper()
