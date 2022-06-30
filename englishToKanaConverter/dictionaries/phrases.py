@@ -29298,6 +29298,7 @@ PHRASES = {
     "MOOD": "ムードゥ",
     "MOODILY": "ムーディリイ",
     "MOODINESS": "ムーディネス",
+    "MOODLE": "ムードゥル",
     "MOODS": "ムーズ",
     "MOODY": "ムーディー",
     "MOOED": "ムードゥ",
