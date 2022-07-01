@@ -33619,6 +33619,7 @@ PHRASES = {
     "POL": "ポル",
     "POLAND": "ポウランドゥ",
     "POLAR": "ポウラー",
+    "POLARIS": "ポラリス",
     "POLARISATION": "ポラライゼイション",
     "POLARISE": "ポウラライズ",
     "POLARISING": "ポウラライジング",
