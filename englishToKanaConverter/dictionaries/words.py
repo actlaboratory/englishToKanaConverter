@@ -184,6 +184,7 @@ WORDS = {
     "JARVI": "ジャービ",
     "JENNA": "ジェナ",
     "JETTA": "ジェッタ",
+    "JIS": "ジス",
     "JOSH": "ジョシュ",
     "JUNIUS": "ジュニアス",
     "JUSTO": "ジュスト",
