@@ -19,8 +19,15 @@ UPPER_IGNORE = (
     "LAN",
     "WAN",
     "GET",
+    "PUT",
     "BES",
     "OF",
+    "RAM",
+    "ROM",
+    "COM",
+    "DOS",
+    "JIS",
+    "END",
 )
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
