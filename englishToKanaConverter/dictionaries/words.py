@@ -10,6 +10,7 @@ WORDS = {
     "AJAX": "アジャックス",
     "ALBEROTO": "アルベルト",
     "ALBUS": "アルバス",
+    "ALT": "オルト",
     "AM": "アム",
     "AMBURGEY": "アンバージー",
     "AMI": "アミ",
