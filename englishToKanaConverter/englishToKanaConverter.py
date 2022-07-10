@@ -248,13 +248,14 @@ class EnglishToKanaConverter:
         self.log.debug(f"alphaToSpell out: {s}")
         return s
 
-    def process(self, s: str) -> str:
+    def process(self, s: str, spellout: bool = True) -> str:
         self.log.debug(f"process in: {s}")
         s = self._zenToHan(s)
         s = self._splitUpperCase(s)
         s = self._engToKana(s)
         s = self._romanToKana(s)
         s = self._trimWhitespaceBetweenUpperCase(s)
-        s = self._alphaToSpell(s)
+        if spellout:
+            s = self._alphaToSpell(s)
         self.log.debug(f"process out: {s}")
         return s
