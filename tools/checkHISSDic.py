@@ -1,4 +1,5 @@
 import csv
+import json
 import os
 import re
 import sys
@@ -19,7 +20,7 @@ if __name__ == "__main__":
     # ヘッダ行は無視
     data = data[1:]
     c = EnglishToKanaConverter()
-    failed = []
+    failed = {}
     for i in data:
         word = i[0]
         # すべて半角の大文字にする
@@ -32,10 +33,8 @@ if __name__ == "__main__":
             continue
         # 発音記号を削除
         i[1] = re.sub("[’＿]", "", i[1])
-        ret = [word, i[1]]
-        failed.append(ret)
+        failed[word] = i[1]
     print("%d words" % len(failed))
     with open("failed.txt", "w", encoding="utf-8", newline="") as f:
-        writer = csv.writer(f, delimiter="\t")
-        writer.writerows(failed)
+        json.dump(failed, f, ensure_ascii=False, indent=4)
     print("Done!")
