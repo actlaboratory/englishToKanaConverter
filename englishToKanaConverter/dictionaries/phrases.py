@@ -31423,6 +31423,7 @@ PHRASES = {
     "ORGIASTIC": "オージアスティック",
     "ORGLESS": "オーグレス",
     "ORGY": "オージイ",
+    "ORICON": "オリコン",
     "ORIENT": "オリエントゥ",
     "ORIENTAL": "オリエンタル",
     "ORIENTATE": "オリエンテイトゥ",
