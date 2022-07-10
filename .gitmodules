@@ -1,0 +1,3 @@
+[submodule "HISS_dic"]
+	path = HISS_dic
+	url = git@github.com:actlaboratory/HISS-dictionary.git
