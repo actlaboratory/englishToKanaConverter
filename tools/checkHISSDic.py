@@ -30,6 +30,8 @@ if __name__ == "__main__":
         converted = c.process(word, False)
         if not re.search("[A-Z']", converted):
             continue
+        # 発音記号を削除
+        i[1] = re.sub("[’＿]", "", i[1])
         ret = [word, i[1]]
         failed.append(ret)
     print("%d words" % len(failed))
