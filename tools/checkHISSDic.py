@@ -20,6 +20,7 @@ if __name__ == "__main__":
     # ヘッダ行は無視
     data = data[1:]
     c = EnglishToKanaConverter()
+    success = {}
     failed = {}
     for i in data:
         word = i[0]
@@ -28,8 +29,8 @@ if __name__ == "__main__":
         word = word.translate(str.maketrans(ZENHAN_TABLE))
         if not re.match("[A-Z']+$", word):
             continue
-        converted = c.process(word, False)
-        if not re.search("[A-Z']", converted):
+        converted = c.process(word.lower(), False)
+        if not re.search("[a-z']", converted):
             continue
         # 発音記号を削除
         i[1] = re.sub("[’＿]", "", i[1])
