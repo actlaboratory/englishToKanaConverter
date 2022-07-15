@@ -88,6 +88,7 @@ python tools/optimizeDic.py
 ### HISSの読み辞書の活用
 
 辞書のメンテナンスには、[High-speed Synthesizer For NVDA(HISS)](https://actlab.org/software/hiss)の読み辞書を活用できます。
+読み辞書は、submoduleとして本リポジトリに含まれています。
 
 本リポジトリの直下で、以下のコマンドを実行します。
 
@@ -104,6 +105,9 @@ HISSと本モジュールとでは辞書の仕組みが大きく異なるため�
 
 Copyright (C) 2022 Kazto Kitabatake, ACT Laboratory All rights reserved.
 
-本プログラムで使用している英語カタカナ変換辞書は、[Bilingual Emacspeak Project](http://www.argv.org/bep/)が提供している`bep-eng.dic`を元にしています。
+本プログラムで使用している英語カタカナ変換辞書は、以下のデータを元にしています。
 
-Copyright 1999-2002 Bilingual Emacspeak Project.　All rights reserved.
+* [Bilingual Emacspeak Project](http://www.argv.org/bep/)が提供している`bep-eng.dic`  
+  Copyright 1999-2002 Bilingual Emacspeak Project.　All rights reserved.
+* [High-speed Synthesizer For NVDA(HISS)](https://actlab.org/software/hiss)の[読み辞書](https://github.com/actlaboratory/HISS-dictionary)  
+  Copyright (c) 2022 AccessibleToolsLaboratory
