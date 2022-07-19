@@ -100,7 +100,6 @@ WORDS = {
     "DODI": "ドジ",
     "DOSTUM": "ドストゥム",
     "DOUBLEDAY": "ダブルデー",
-    "DR": "ドクター",
     "DUDLEY": "ダドゥリー",
     "DUMA": "ズーマ",
     "DUMBLEDORE": "ダンブルドー",
