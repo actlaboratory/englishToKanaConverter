@@ -26929,7 +26929,7 @@ PHRASES = {
     "LOBULAR": "ロビュラー",
     "LOCA": "ロケイ",
     "LOCAL": "ローカル",
-    "LOCALE": "ロウカール",
+    "LOCALE": "ロケール",
     "LOCALISED": "ローカライズトゥ",
     "LOCALITIES": "ローカリティイズ",
     "LOCALITY": "ロウカリティー",
