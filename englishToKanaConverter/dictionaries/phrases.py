@@ -3040,7 +3040,7 @@ PHRASES = {
     "ARGV": "アーグブイ",
     "ARGYLL": "アージル",
     "ARI": "アリ",
-    "ARIA": "エリア",
+    "ARIA": "アリア",
     "ARIAN": "エリアン",
     "ARIBTRARY": "アリブトゥラリー",
     "ARICEPT": "アリセプトゥ",
