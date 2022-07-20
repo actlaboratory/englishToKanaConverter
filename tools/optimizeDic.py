@@ -5,11 +5,15 @@ import os
 import re
 import sys
 
+# englishToKanaConverter moduleのimportを可能にする
+sys.path.append(os.getcwd())
 from englishToKanaConverter.englishToKanaConverter import ZENHAN_TABLE
+from englishToKanaConverter import EnglishToKanaConverter
 
 
 if __name__ == "__main__":
-    files = glob.glob(os.path.join("englishToKanaConverter", "dictionaries", "*.py"))
+    files = glob.glob(os.path.join(
+        "englishToKanaConverter", "dictionaries", "*.py"))
     for path in files:
         if os.path.basename(path) == "__init__.py":
             # 辞書本体ではない

@@ -4,8 +4,11 @@ import os
 import re
 import sys
 
-from englishToKanaConverter import EnglishToKanaConverter
+# englishToKanaConverter moduleのimportを可能にする
+sys.path.append(os.getcwd())
+
 from englishToKanaConverter.constants import ZENHAN_TABLE
+from englishToKanaConverter import EnglishToKanaConverter
 
 
 if __name__ == "__main__":
@@ -13,7 +16,7 @@ if __name__ == "__main__":
     if not os.path.isfile(file):
         sys.stderr.write("File does not exist.\n")
         sys.exit(1)
-    
+
     with open(file, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         data = list(reader)
