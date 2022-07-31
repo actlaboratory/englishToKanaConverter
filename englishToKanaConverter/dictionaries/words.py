@@ -220,6 +220,7 @@ WORDS = {
     "LOUDUN": "ルーダン",
     "LYND": "リンドゥ",
     "MAE": "メイ",
+    "MAGICTV": "マジックティーブイ",
     "MAH": "マハ",
     "MAKEBSE": "メイクビーエスイー",
     "MALAITA": "マライタ",
