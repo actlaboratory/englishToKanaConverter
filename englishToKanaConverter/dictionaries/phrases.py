@@ -5805,6 +5805,7 @@ PHRASES = {
     "BORROWING": "ボロウイング",
     "BORROWS": "ボロウズ",
     "BOSAI": "ボーサイ",
+    "BOSE": "ボーズ",
     "BOSH": "ボッシュ",
     "BOSKY": "ボスキイ",
     "BOSNIA": "ボズニア",
