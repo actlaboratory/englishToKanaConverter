@@ -19,6 +19,8 @@ UPPER_IGNORE = (
     "JIS",
     "END",
     "THE",
+    "IN",
+    "OUT",
 )
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
