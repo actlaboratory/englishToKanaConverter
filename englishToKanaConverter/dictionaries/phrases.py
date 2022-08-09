@@ -20437,6 +20437,7 @@ PHRASES = {
     "GONEN": "ゴネン",
     "GONG": "ゴング",
     "GONNA": "ゴナ",
+    "GOO": "グー",
     "GOOD": "グッドゥ",
     "GOODBY": "グッドバイ",
     "GOODBYE": "グッドバイ",
