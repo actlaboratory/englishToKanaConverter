@@ -23,6 +23,7 @@ UPPER_IGNORE = (
     "OUT",
     "NEW",
     "ZIP",
+    "TEL",
 )
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
