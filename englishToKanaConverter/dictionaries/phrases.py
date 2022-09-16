@@ -46190,6 +46190,7 @@ PHRASES = {
     "TWEESE": "トゥウィーズ",
     "TWEET": "トゥィートゥ",
     "TWEETER": "トゥイーター",
+    "TWEETS": "トゥィーツ",
     "TWEEZE": "トゥイーズ",
     "TWEEZER": "トゥィーザー",
     "TWEEZING": "トゥイージング",
