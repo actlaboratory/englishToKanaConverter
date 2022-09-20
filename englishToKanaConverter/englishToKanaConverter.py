@@ -3,7 +3,7 @@ import logging
 import os
 import re
 import traceback
-from typing import Tuple
+from typing import List, Tuple
 
 from . import dictionaries
 from .constants import *
@@ -29,8 +29,9 @@ class EnglishToKanaConverter:
         self.log.debug(f"zenToHan out: {s}")
         return s
 
-    def _splitUpperCase(self, s: str) -> str:
+    def _splitUpperCase(self, s: str) -> List[str]:
         self.log.debug(f"splitUpperCase in: {s}")
+        ret = []
         self.log.debug("searching for upper case")
         # 大文字を探す
         result = re.finditer("[^A-Z]?([A-Z]+)", s)
@@ -46,11 +47,12 @@ class EnglishToKanaConverter:
                 self.log.debug("skipped")
                 continue
             for cnt in range(match.end(1) - 1, match.start(1) - 1, -1):
-                self.log.debug(f"found: {s[s.rfind(' ', 0, cnt) + 1:cnt]}{s[cnt:s.find(' ', cnt)]}")
-                s = s[:cnt] + " " + s[cnt:]
-                self.log.debug(f"converted: {s[s.rfind(' ', 0, cnt) + 1:cnt]}{s[cnt:s.find(' ', cnt + 1)]}")
-        self.log.debug(f"splitUpperCase out: {s}")
-        return s
+                ret.insert(0, s[cnt:])
+                s = s[:cnt]
+        # 残った文字を追加
+        ret.insert(0, s)
+        self.log.debug(f"splitUpperCase out: {ret}")
+        return ret
 
     def _engToKana(self, s: str) -> str:
         self.log.debug(f"engToKana in: {s}")
@@ -205,29 +207,11 @@ class EnglishToKanaConverter:
         self.log.debug(f"romanToKana out: {result}")
         return result
 
-    def _trimWhitespaceBetweenUpperCase(self, s: str) -> str:
+    def _trimWhitespaceBetweenUpperCase(self, s: List[str]) -> str:
         self.log.debug(f"trimWhitespaceBetweenUpperCase in: {s}")
-        self.log.debug("searching for upper case")
-        # 大文字を探す
-        result = re.finditer("[A-Z]+", s)
-        result = list(result)
-        # 文字の挿入時にインデックスが狂わないように後ろから処理する
-        result.reverse()
-        for match in result:
-            self.log.debug(f"match: {match.group()}")
-            length = match.end() - match.start()
-            self.log.debug(f"length: {length}")
-            if length > 1:
-                # 連続する大文字は無視
-                self.log.debug("skipped")
-                continue
-            index = match.start()
-            if index > 0 and s[index - 1] == " ":
-                self.log.debug(f"found: {s[s.rfind(' ', 0, index) + 1:index]}{s[index:s.find(' ', index)]}")
-                s = s[:index - 1] + s[index:]
-                self.log.debug(f"converted: {s[s.rfind(' ', 0, index) + 1:index]}{s[index:s.find(' ', index)]}")
-        self.log.debug(f"trimWhitespaceBetweenUpperCase out: {s}")
-        return s
+        ret = "".join(s)
+        self.log.debug(f"trimWhitespaceBetweenUpperCase out: {ret}")
+        return ret
 
     def _alphaToSpell(self, s: str) -> str:
         self.log.debug(f"alphaToSpell in: {s}")
@@ -252,8 +236,9 @@ class EnglishToKanaConverter:
         self.log.debug(f"process in: {s}")
         s = self._zenToHan(s)
         s = self._splitUpperCase(s)
-        s = self._engToKana(s)
-        s = self._romanToKana(s)
+        for i in range(len(s)):
+            s[i] = self._engToKana(s[i])
+            s[i] = self._romanToKana(s[i])
         s = self._trimWhitespaceBetweenUpperCase(s)
         if spellout:
             s = self._alphaToSpell(s)
