@@ -49,8 +49,9 @@ class EnglishToKanaConverter:
             for cnt in range(match.end(1) - 1, match.start(1) - 1, -1):
                 ret.insert(0, s[cnt:])
                 s = s[:cnt]
-        # 残った文字を追加
-        ret.insert(0, s)
+        # 残った文字があれば追加
+        if s:
+            ret.insert(0, s)
         self.log.debug(f"splitUpperCase out: {ret}")
         return ret
 
