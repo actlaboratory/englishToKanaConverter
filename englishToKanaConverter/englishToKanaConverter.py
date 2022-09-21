@@ -44,7 +44,7 @@ class EnglishToKanaConverter:
             self.log.debug(f"length: {length}")
             if length > UPPER_MAX:
                 # 一定以上長い大文字列
-                if len(s) <= match.end(1) or s[match.end(1)].isupper():
+                if len(s) == match.end(1) or len(s) > match.end(1) and not s[match.end(1)].islower():
                     # 大文字列の手前で分割
                     ret.insert(0, s[match.start(1):])
                     s = s[:match.start(1)]
