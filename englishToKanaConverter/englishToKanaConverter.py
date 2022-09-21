@@ -50,11 +50,6 @@ class EnglishToKanaConverter:
                     s = s[:match.end(1) - 1]
                     self.log.debug(f"current: {ret[0]}")
                     self.log.debug(f"remain: {s}")
-                # 大文字列の手前で分割
-                ret.insert(0, s[match.start(1):])
-                s = s[:match.start(1)]
-                self.log.debug(f"current: {ret[0]}")
-                self.log.debug(f"remain: {s}")
                 self.log.debug("skipped")
                 continue
             elif match.group(1) in UPPER_IGNORE:
