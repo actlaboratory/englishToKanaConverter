@@ -44,15 +44,22 @@ class EnglishToKanaConverter:
             self.log.debug(f"length: {length}")
             if length > UPPER_MAX:
                 # 一定以上長い大文字列
-                if len(s) > match.end(1) and s[match.end(1)].islower():
-                    # 大文字列の末尾から新しい単語が始まる
-                    ret.insert(0, s[match.end(1) - 1:])
-                    s = s[:match.end(1) - 1]
+                if len(s) <= match.end(1) or s[match.end(1)].isupper():
+                    # 大文字列の手前で分割
+                    ret.insert(0, s[match.start(1):])
+                    s = s[:match.start(1)]
                     self.log.debug(f"current: {ret[0]}")
                     self.log.debug(f"remain: {s}")
+                    self.log.debug("skipped")
+                    continue
+                # 大文字列の末尾から新しい単語が始まる
+                ret.insert(0, s[match.end(1) - 1:])
+                s = s[:match.end(1) - 1]
+                self.log.debug(f"current: {ret[0]}")
+                self.log.debug(f"remain: {s}")
                 phrase = s[match.start(1):]
                 if len(phrase) > UPPER_MAX or phrase in UPPER_IGNORE:
-                # 大文字列の手前で分割
+                    # 大文字列の手前で分割
                     ret.insert(0, s[match.start(1):])
                     s = s[:match.start(1)]
                     self.log.debug(f"current: {ret[0]}")
