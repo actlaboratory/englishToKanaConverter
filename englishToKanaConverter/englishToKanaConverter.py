@@ -42,13 +42,31 @@ class EnglishToKanaConverter:
             self.log.debug(f"match: {match.group(1)}")
             length = match.end(1) - match.start(1)
             self.log.debug(f"length: {length}")
-            if length > UPPER_MAX or match.group(1) in UPPER_IGNORE:
-                # 一定以上長い大文字列や、特定の大文字列は無視
+            if length > UPPER_MAX:
+                # 一定以上長い大文字列は無視
+                if len(s) > match.end(1) and s[match.end(1)].islower():
+                    # 大文字列の末尾から新しい単語が始まる
+                    ret.insert(0, s[match.end(1) - 1:])
+                    s = s[:match.end(1) - 1]
+                    self.log.debug(f"current: {ret[0]}")
+                    self.log.debug(f"remain: {s}")
+                # 大文字列の手前で分割
+                ret.insert(0, s[match.start(1):])
+                s = s[:match.start(1)]
+                self.log.debug(f"current: {ret[0]}")
+                self.log.debug(f"remain: {s}")
+                self.log.debug("skipped")
+                continue
+            elif match.group(1) in UPPER_IGNORE:
+                # 特定の大文字列は無視
+                self.log.debug(f"{match.group(1)} must be ignored")
                 self.log.debug("skipped")
                 continue
             for cnt in range(match.end(1) - 1, match.start(1) - 1, -1):
                 ret.insert(0, s[cnt:])
                 s = s[:cnt]
+                self.log.debug(f"current: {ret[0]}")
+                self.log.debug(f"remain: {s}")
         # 残った文字があれば追加
         if s:
             ret.insert(0, s)
