@@ -25,6 +25,7 @@ UPPER_IGNORE = (
     "ZIP",
     "TEL",
     "NEO",
+    "POP",
 )
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
