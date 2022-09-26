@@ -613,7 +613,7 @@ PHRASES = {
     "ACOPY": "エイコピー",
     "ACORN": "エイコーン",
     "ACOSTA": "アコスタ",
-    "ACOUSTIC": "アクースティック",
+    "ACOUSTIC": "アコースティック",
     "ACOUSTICAL": "アクースティカル",
     "ACOUSTICALLY": "アクースティカリー",
     "ACOUSTICIAN": "アクースティシャン",
