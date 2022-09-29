@@ -3011,7 +3011,7 @@ PHRASES = {
     "ARDUINO": "アルドゥイーノ",
     "ARDUOUS": "アージュアス",
     "ARE": "アー",
-    "AREA": "エアリア",
+    "AREA": "エリア",
     "AREN'T": "アーントゥ",
     "ARENA": "アリーナ",
     "ARENACEOUS": "アレネイシャス",
