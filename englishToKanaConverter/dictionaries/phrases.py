@@ -15030,7 +15030,7 @@ PHRASES = {
     "EASY": "イージイ",
     "EASYGOING": "イージーゴウイング",
     "EASYHARD": "イージーハードゥ",
-    "EASYMENU": "イイージイメニュー",
+    "EASYMENU": "イージイメニュー",
     "EASYTERM": "イージーターム",
     "EAT": "イートゥ",
     "EATABLE": "イータブル",
