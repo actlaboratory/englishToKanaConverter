@@ -32313,6 +32313,7 @@ PHRASES = {
     "PARRY": "パリー",
     "PARSE": "パース",
     "PARSED": "パーストゥ",
+    "PARSER": "パーサー",
     "PARSERS": "パーサーズ",
     "PARSES": "パーシズ",
     "PARSIMONEOUS": "パーシモウニアス",
