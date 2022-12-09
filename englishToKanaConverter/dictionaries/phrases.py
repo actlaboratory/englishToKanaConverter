@@ -32858,7 +32858,7 @@ PHRASES = {
     "PERINEA": "ペリニア",
     "PERINEAL": "ペリニアル",
     "PERINEUM": "ペリニアム",
-    "PERIOD": "ピアリオドゥ",
+    "PERIOD": "ピリオド",
     "PERIODENTAL": "ピリオデンタル",
     "PERIODIC": "ピリオディク",
     "PERIODICAL": "ピリオディカル",
