@@ -40257,6 +40257,7 @@ PHRASES = {
     "SHARK": "シャーク",
     "SHARKED": "シャークトゥ",
     "SHARKING": "シャーキング",
+    "SHARKY": "シャーキー",
     "SHARON": "シャロン",
     "SHARP": "シャープ",
     "SHARPED": "シャープトゥ",
