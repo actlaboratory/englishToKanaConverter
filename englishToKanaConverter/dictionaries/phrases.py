@@ -34202,6 +34202,7 @@ PHRASES = {
     "POSTPONING": "ポウストゥポウニング",
     "POSTS": "ポスツ",
     "POSTSCRIPT": "ポウストゥスクリプトゥ",
+    "POSTSEVEN": "ポストゥセブン",
     "POSTULATE": "ポスチュレイトゥ",
     "POSTULATED": "ポスチュレイティドゥ",
     "POSTULATES": "ポスチュレイツ",
