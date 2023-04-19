@@ -28610,6 +28610,7 @@ PHRASES = {
     "MERITS": "メリッツ",
     "MERIWETHER": "メリウェザー",
     "MERKER": "マーカー",
+    "MERKLE": "マークル",
     "MERLIN": "マーリン",
     "MERMAID": "マーメイドゥ",
     "MERO": "メロウ",
