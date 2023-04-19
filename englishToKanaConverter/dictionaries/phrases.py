@@ -28687,6 +28687,7 @@ PHRASES = {
     "METALDEHYDE": "メタアルデヒドゥ",
     "METALIC": "メタリク",
     "METALLIC": "メタリック",
+    "METALLICA": "メタリカ",
     "METALLOPEPTIDASE": "メタロペプティデイス",
     "METALLOPROTEINAS": "メタロプロテイネイス",
     "METALLOPROTEINASE": "メタロプロテイネイス",
