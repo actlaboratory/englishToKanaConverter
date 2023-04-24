@@ -10,11 +10,14 @@ from .constants import *
 
 
 class EnglishToKanaConverter:
-    def __init__(self, debug=False) -> None:
+    def __init__(self, debug=False, logFile="") -> None:
         # デバッグ用のログ出力
         self.log = logging.getLogger(__class__.__name__)
         if debug:
-            logHandler = logging.FileHandler(f"{os.path.splitext(__file__)[0]}.log", "w", "utf-8")
+            if logFile:
+                logHandler = logging.FileHandler(logFile, "w", "utf-8")
+            else:
+                logHandler = logging.FileHandler(f"{os.path.splitext(__file__)[0]}.log", "w", "utf-8")
             logHandler.setLevel(logging.DEBUG)
             self.log.setLevel(logging.DEBUG)
         else:

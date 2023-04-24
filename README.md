@@ -31,7 +31,8 @@ python 3.7以降
 from englishToKanaConverter import EnglishToKanaConverter
 
 # EnglishToKanaConverterインスタンスを作成
-# 第1引数debugをTrueにすると、englishToKanaConverterディレクトリ内にenglishToKanaConverter.logというファイルが生成され、ログが記録されます。
+# 第1引数debugをTrueにすると、ログファイルが生成され、ログが記録されます。
+# ログファイルの場所は、通常`englishToKanaConverter/englishToKanaConverter.log`ですが、第2引数logFileを用いて、任意に変更できます。
 # 引数を省略するとFalseになり、ログは生成されません。
 converter = EnglishToKanaConverter()
 # 変換元のテキスト
