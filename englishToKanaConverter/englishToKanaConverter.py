@@ -131,7 +131,14 @@ class EnglishToKanaConverter:
         for cnt in range(len(s), 0, -1):
             tmp = s[0:cnt]
             self.log.debug(f"checking: {tmp}")
-            converted = dictionaries.PHRASES.get(tmp.upper(), "")
+            # 「必ずスペルアウトしなければならない文字列」かどうかを調べる
+            if tmp.upper() in MUST_SPELLED:
+                # 強制的にスペルアウト
+                self.log.debug(f"{tmp} must be spelled out")
+                converted = self._alphaToSpell(tmp)
+            else:
+                # 普通に辞書引き
+                converted = dictionaries.PHRASES.get(tmp.upper(), "")
             if converted == "":
                 # 変換できなかった
                 self.log.debug(f"not found: {tmp}")
