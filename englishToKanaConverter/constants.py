@@ -100,4 +100,5 @@ ZENHAN_TABLE = {
 MUST_SPELLED = (
     "GPT",
     "APP",
+    "URL",
 )
