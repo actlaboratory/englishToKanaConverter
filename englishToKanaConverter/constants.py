@@ -101,4 +101,5 @@ MUST_SPELLED = (
     "GPT",
     "APP",
     "URL",
+    "PC",
 )
