@@ -102,4 +102,6 @@ MUST_SPELLED = (
     "APP",
     "URL",
     "PC",
+    "DIR",
+    "DEV",
 )
