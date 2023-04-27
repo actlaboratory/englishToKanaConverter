@@ -24680,6 +24680,7 @@ PHRASES = {
     "ISGRAPH": "イズグラフ",
     "ISHMAEL": "イシュミアル",
     "ISINGLASS": "アイジングラス",
+    "ISINSTANCE": "イズインスタンス",
     "ISLAM": "イスラム",
     "ISLAMABAD": "イスラマバードゥ",
     "ISLAMIAH": "イスラミアー",
