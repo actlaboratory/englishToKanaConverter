@@ -29888,6 +29888,7 @@ PHRASES = {
     "MUSEAM": "ミュージアム",
     "MUSED": "ミューズドゥ",
     "MUSES": "ミュージズ",
+    "MUSESCORE": "ミューズスコアー",
     "MUSET": "ミュゼットゥ",
     "MUSEUM": "ミュージアム",
     "MUSEUMS": "ミュージアムズ",
