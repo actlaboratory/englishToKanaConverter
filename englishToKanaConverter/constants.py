@@ -104,4 +104,6 @@ MUST_SPELLED = (
     "PC",
     "DIR",
     "DEV",
+    "STR",
+    "STD",
 )
