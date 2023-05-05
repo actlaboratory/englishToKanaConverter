@@ -19781,6 +19781,7 @@ PHRASES = {
     "GAZETTEER": "ガゼティアー",
     "GAZING": "ゲイジング",
     "GAZOU": "ガゾウ",
+    "GBOARD": "ジーボードゥ",
     "GBYTE": "ギガバイトゥ",
     "GBYTES": "ギガバイツ",
     "GDANSK": "グダニスク",
