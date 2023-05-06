@@ -30803,7 +30803,7 @@ PHRASES = {
     "NOTIFIABLE": "ノウティファイアブル",
     "NOTIFICATION": "ノウティフィケイション",
     "NOTIFIED": "ノウティファイドゥ",
-    "NOTIFIER": "ノーティファイアー",
+    "NOTIFIER": "ノウティファイアー",
     "NOTIFIES": "ノウティファイズ",
     "NOTIFY": "ノウティファイ",
     "NOTING": "ノウティング",
