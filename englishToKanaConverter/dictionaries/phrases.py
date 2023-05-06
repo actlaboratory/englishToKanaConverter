@@ -9091,6 +9091,7 @@ PHRASES = {
     "CODER": "コウダー",
     "CODERA": "コデラ",
     "CODES": "コウズ",
+    "CODESPACE": "コウドゥスペイス",
     "CODGER": "コッジャー",
     "CODING": "コウディング",
     "CODON": "コードン",
