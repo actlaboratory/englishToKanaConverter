@@ -106,4 +106,5 @@ MUST_SPELLED = (
     "DEV",
     "STR",
     "STD",
+    "ISO",
 )
