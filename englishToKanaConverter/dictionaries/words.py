@@ -271,7 +271,6 @@ WORDS = {
     "OSHITA": "オオシタ",
     "OSIRIS": "オシリス",
     "OSSENBURGER": "オッセンバーガー",
-    "OSWCHAT": "オーエスダブリュチャットゥ",
     "OTRANTO": "オトゥラント",
     "OZARKS": "オザークス",
     "PACINO": "パシーノ",

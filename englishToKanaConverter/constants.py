@@ -108,4 +108,5 @@ MUST_SPELLED = (
     "STD",
     "ISO",
     "OK",
+    "OSW",
 )
