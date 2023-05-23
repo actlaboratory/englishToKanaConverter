@@ -104,8 +104,6 @@ class EnglishToKanaConverter:
             # 英語が出てくるまででは処理不要
             result += s[:match.start()]
             self.log.debug(f"match: {match.group()}")
-            # 英語を一時保存
-            tmpEng = match.group()
             # 単独で存在すべき文字列と合致するか
             val = dictionaries.WORDS.get(match.group().upper())
             if val is not None:
@@ -279,12 +277,16 @@ class EnglishToKanaConverter:
     def process(self, s: str, spellout: bool = True) -> str:
         self.log.debug(f"process in: {s}")
         s = self._zenToHan(s)
+        # 文字列を分割したリストに変換
         s = self._splitUpperCase(s)
+        # リストの要素ごとにカナ変換
         for i in range(len(s)):
             s[i] = self._engToKana(s[i])
             s[i] = self._romanToKana(s[i])
+        # リストを結合して元の状態に戻す
         s = self._trimWhitespaceBetweenUpperCase(s)
         if spellout:
+            # 変換できなかった箇所をスペルアウト
             s = self._alphaToSpell(s)
         self.log.debug(f"process out: {s}")
         return s
