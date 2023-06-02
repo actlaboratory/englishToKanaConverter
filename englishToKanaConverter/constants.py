@@ -100,4 +100,13 @@ ZENHAN_TABLE = {
 MUST_SPELLED = (
     "GPT",
     "APP",
+    "URL",
+    "PC",
+    "DIR",
+    "DEV",
+    "STR",
+    "STD",
+    "ISO",
+    "OK",
+    "OSW",
 )
