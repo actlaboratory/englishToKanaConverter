@@ -45350,7 +45350,6 @@ PHRASES = {
     "TOOLED": "トゥールドゥ",
     "TOOLING": "トゥーリング",
     "TOON": "トゥーン",
-    "TOONTRACK": "トゥーントラック",
     "TOOT": "トゥートゥ",
     "TOOTED": "トゥーティドゥ",
     "TOOTER": "ツーター",
