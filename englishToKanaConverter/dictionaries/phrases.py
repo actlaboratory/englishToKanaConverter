@@ -22075,6 +22075,7 @@ PHRASES = {
     "HIVE": "ハイブ",
     "HIX": "ヒックス",
     "HIZBALLAH": "ヒズバラ",
+    "HLOOKUP": "エイチルックアップ",
     "HNOTE": "エイチノートゥ",
     "HOAR": "ホアー",
     "HOARD": "ホードゥ",
