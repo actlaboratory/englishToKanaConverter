@@ -20573,7 +20573,7 @@ PHRASES = {
     "GRADES": "グレイズ",
     "GRADIENT": "グレイディエントゥ",
     "GRADING": "グレイディング",
-    "GRADLE": "グラドゥル",
+    "GRADLE": "グレイドル",
     "GRADUAL": "グラジュアル",
     "GRADUALIST": "グラジュアリストゥ",
     "GRADUALLY": "グラジュアリー",
