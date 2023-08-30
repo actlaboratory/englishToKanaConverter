@@ -24880,6 +24880,7 @@ PHRASES = {
     "JARROF": "ジャロフ",
     "JARS": "ジャーズ",
     "JARTICLE": "ジェイアーティクル",
+    "JARVI": "ジャービ",
     "JASMINE": "ジャスミン",
     "JASON": "ジェイソン",
     "JASPER": "ジャスパー",
