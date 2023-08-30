@@ -43992,6 +43992,7 @@ PHRASES = {
     "SYNESTHETE": "シネスシートゥ",
     "SYNESTHETIC": "シネスセティク",
     "SYNOD": "シノドゥ",
+    "SYNOLOGY": "シノロジー",
     "SYNONYM": "シノニム",
     "SYNONYMOUS": "シノニマス",
     "SYNOPSIS": "シノプシス",
