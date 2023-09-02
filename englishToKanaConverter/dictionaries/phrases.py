@@ -44462,6 +44462,7 @@ PHRASES = {
     "TELEPHONING": "テレフォニング",
     "TELEPHONY": "テレフォニー",
     "TELEPUTING": "テレパティング",
+    "TELERIK": "テレリック",
     "TELESCOPE": "テレスコウプ",
     "TELESCOPIC": "テレスコウピク",
     "TELESIS": "テレシス",
