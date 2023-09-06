@@ -179,7 +179,6 @@ WORDS = {
     "ISADORE": "イザドー",
     "ITALIA": "イタリア",
     "JALISCO": "ハリスコ",
-    "JARVI": "ジャービ",
     "JENNA": "ジェナ",
     "JETTA": "ジェッタ",
     "JIS": "ジス",
