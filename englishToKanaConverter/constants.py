@@ -29,6 +29,10 @@ UPPER_IGNORE = (
     "FOR",
     "AND",
     "MAC",
+    "AND",
+    "OR",
+    "NOT",
+    "IS",
 )
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
