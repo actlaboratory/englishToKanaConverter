@@ -113,4 +113,5 @@ MUST_SPELLED = (
     "ISO",
     "OK",
     "OSW",
+    "DTM",
 )
