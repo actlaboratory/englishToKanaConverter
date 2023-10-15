@@ -16000,7 +16000,7 @@ PHRASES = {
     "ENGULFS": "インガルフス",
     "ENHANCE": "エンハンス",
     "ENHANCED": "エンハンストゥ",
-    "ENHANCER": "インハンサー",
+    "ENHANCER": "エンハンサー",
     "ENHANCES": "エンハンシズ",
     "ENHANCING": "エンハンシング",
     "ENIGMA": "イニイグマ",
