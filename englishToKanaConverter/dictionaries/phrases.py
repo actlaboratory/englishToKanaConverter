@@ -22851,6 +22851,7 @@ PHRASES = {
     "IDENTITY": "アイデンティティー",
     "IDENTS": "アイデンツ",
     "IDEOGRAM": "アイディオグラム",
+    "IDEOGRAPHIC": "イデオグラフィック",
     "IDEOLOGICAL": "イデオロジカル",
     "IDEOLOGICALLY": "イデオロジカリー",
     "IDEOLOGIES": "イデオロジイズ",
