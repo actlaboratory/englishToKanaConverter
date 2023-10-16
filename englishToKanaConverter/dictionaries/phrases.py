@@ -3246,7 +3246,6 @@ PHRASES = {
     "ARY": "アーリー",
     "ARYAN": "エアリアン",
     "ARYANISM": "エリアニズム",
-    "AS": "アズ",
     "ASAHINET": "アサヒネットゥ",
     "ASATERM": "アサターム",
     "ASAXON": "エイサクソン",
