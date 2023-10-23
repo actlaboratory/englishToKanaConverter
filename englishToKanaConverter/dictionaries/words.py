@@ -19,6 +19,7 @@ WORDS = {
     "ARETAEUS": "アレタイオス",
     "AROUNDS": "アラウンズ",
     "ARRAGON": "アラゴン",
+    "AS": "アズ",
     "ASANA": "アーサナ",
     "ASHE": "アッシュ",
     "ASMARA": "アスマラ",
