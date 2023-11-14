@@ -250,7 +250,6 @@ WORDS = {
     "NEWSON": "ニューソン",
     "NIK": "ニック",
     "NIKS": "ニックス",
-    "NO": "ノー",
     "NORWOOD": "ノーウッド",
     "OAKLEY": "オークリー",
     "OBERLIN": "オーバーリン",
