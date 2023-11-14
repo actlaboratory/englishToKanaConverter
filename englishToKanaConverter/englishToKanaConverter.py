@@ -119,7 +119,7 @@ class EnglishToKanaConverter:
         self.log.debug(f"engToKana out: {result}")
         return result
 
-    def _partsToKana(self, s: str, includePrefix: bool=True) -> Tuple[bool, str, str]:
+    def _partsToKana(self, s: str, includePrefix: bool = True) -> Tuple[bool, str, str]:
         self.log.debug(f"partsToKana in: {s}")
         # 変数の初期化
         success = False
