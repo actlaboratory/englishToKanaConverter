@@ -119,7 +119,7 @@ class EnglishToKanaConverter:
         self.log.debug(f"engToKana out: {result}")
         return result
 
-    def _partsToKana(self, s: str) -> Tuple[bool, str, str]:
+    def _partsToKana(self, s: str, includePrefix: bool=True) -> Tuple[bool, str, str]:
         self.log.debug(f"partsToKana in: {s}")
         # 変数の初期化
         success = False
@@ -137,6 +137,12 @@ class EnglishToKanaConverter:
             else:
                 # 普通に辞書引き
                 converted = dictionaries.PHRASES.get(tmp.upper(), "")
+                # 必要なら接頭語のチェック
+                if not converted and includePrefix:
+                    converted = dictionaries.PREFIX.get(tmp.upper(), "")
+                    # ログを出すだけ
+                    if converted:
+                        self.log.debug(f"prefix {tmp} -> {converted}")
             if converted == "":
                 # 変換できなかった
                 self.log.debug(f"not found: {tmp}")
@@ -157,7 +163,7 @@ class EnglishToKanaConverter:
                 self.log.debug(f"partsToKana out: success={success}, converted={converted}, remaining={''}")
                 return success, converted, ""
             # 続きをチェック
-            success2, converted2, remaining2 = self._partsToKana(remaining)
+            success2, converted2, remaining2 = self._partsToKana(remaining, False)
             if not success2:
                 # 変換できなかった
                 success = False
