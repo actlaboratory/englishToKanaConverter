@@ -30396,6 +30396,7 @@ PHRASES = {
     "NETS": "ネッツ",
     "NETSCAPE": "ネットゥスケイプ",
     "NETSEND": "ネットゥセンドゥ",
+    "NETSHOP": "ネットゥショップ",
     "NETSHOW": "ネットゥショウ",
     "NETTED": "ネッティドゥ",
     "NETTING": "ネッティング",
