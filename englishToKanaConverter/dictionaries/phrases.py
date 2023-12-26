@@ -24854,6 +24854,7 @@ PHRASES = {
     "JANE": "ジェイン",
     "JANET": "ジャネットゥ",
     "JANETTER": "ジャネッター",
+    "JANG": "ジャン",
     "JANGLE": "ジャングル",
     "JANGLES": "ジャングルズ",
     "JANGLING": "ジャングリング",
