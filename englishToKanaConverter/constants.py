@@ -115,4 +115,5 @@ MUST_SPELLED = (
     "OK",
     "OSW",
     "DTM",
+    "API",
 )
