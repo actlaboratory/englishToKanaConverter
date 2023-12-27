@@ -37359,6 +37359,7 @@ PHRASES = {
     "REPLIED": "リプライドゥ",
     "REPLIES": "リプライズ",
     "REPLY": "リプライ",
+    "REPO": "リポ",
     "REPOLARISATION": "リポーラリゼイション",
     "REPOPULATE": "リポピュレイトゥ",
     "REPORT": "リポートゥ",
