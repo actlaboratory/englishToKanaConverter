@@ -46564,7 +46564,6 @@ PHRASES = {
     "UNWIELDY": "アンウィールディー",
     "UNWIND": "アンワインドゥ",
     "UNWOUND": "アンワウンドゥ",
-    "UP": "アップ",
     "UPANISHAD": "ウパーニシャドゥ",
     "UPDATEFM": "アップデイトゥフィルメンテ",
     "UPHEAVAL": "アプヒーヴァル",
