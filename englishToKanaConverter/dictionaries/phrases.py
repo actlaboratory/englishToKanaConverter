@@ -37207,7 +37207,6 @@ PHRASES = {
     "REMUNERATING": "リミューナレイティング",
     "REMUNERATION": "リミューナレイション",
     "REMUNERATIVE": "リミューナラティブ",
-    "RENA": "リネイ",
     "RENAISSANCE": "ルネサンス",
     "RENAL": "リーナル",
     "RENAME": "リネイム",
