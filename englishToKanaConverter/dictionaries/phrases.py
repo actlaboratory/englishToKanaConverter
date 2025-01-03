@@ -48911,6 +48911,7 @@ PHRASES = {
     "ZEOS": "ジオス",
     "ZEPHYR": "ゼファー",
     "ZEPPELIN": "ツェッペリン",
+    "ZERO": "ゼロ",
     "ZEROES": "ゼロウズ",
     "ZEST": "ゼストゥ",
     "ZESTFULLY": "ゼストゥフリー",
