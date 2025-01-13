@@ -14,6 +14,7 @@ WORDS = {
     "AM": "アム",
     "AMBURGEY": "アンバージー",
     "AMI": "アミ",
+    "AN": "アン",
     "APPRENTICES": "アプレンティシズ",
     "AQSA": "アクサ",
     "ARETAEUS": "アレタイオス",
