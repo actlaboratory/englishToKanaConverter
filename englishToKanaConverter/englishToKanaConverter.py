@@ -127,29 +127,30 @@ class EnglishToKanaConverter:
         remaining = ""
         # 文字数を減らしながら変換できそうな単語を探す
         for cnt in range(len(s), 0, -1):
-            tmp = s[0:cnt]
-            self.log.debug(f"checking: {tmp}")
+            target = s[0:cnt]
+            targetUpper = target.upper()
+            self.log.debug(f"checking: {target}")
             # 「必ずスペルアウトしなければならない文字列」かどうかを調べる
-            if tmp.upper() in MUST_SPELLED:
+            if targetUpper in MUST_SPELLED:
                 # 強制的にスペルアウト
-                self.log.debug(f"{tmp} must be spelled out")
-                converted = self._alphaToSpell(tmp)
+                self.log.debug(f"{target} must be spelled out")
+                converted = self._alphaToSpell(target)
             else:
                 # 普通に辞書引き
-                converted = dictionaries.PHRASES.get(tmp.upper(), "")
+                converted = dictionaries.PHRASES.get(targetUpper, "")
                 # 必要なら接頭語のチェック
-                if not converted and includePrefix:
-                    converted = dictionaries.PREFIX.get(tmp.upper(), "")
+                if not converted and includePrefix and s[cnt:]:
+                    converted = dictionaries.PREFIX.get(targetUpper, "")
                     # ログを出すだけ
                     if converted:
-                        self.log.debug(f"prefix {tmp} -> {converted}")
+                        self.log.debug(f"prefix {target} -> {converted}")
             if converted == "":
                 # 変換できなかった
-                self.log.debug(f"not found: {tmp}")
+                self.log.debug(f"not found: {target}")
                 success = False
                 continue
             success = True
-            self.log.debug(f"found: {tmp} -> {converted}")
+            self.log.debug(f"found: {target} -> {converted}")
             remaining = s[cnt:]
             if remaining == "":
                 self.log.debug(f"partsToKana out: success={success}, converted={converted}, remaining={remaining}")
