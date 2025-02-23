@@ -1791,6 +1791,7 @@ PHRASES = {
     "ALTITUDED": "アルティテュウディドゥ",
     "ALTITUDES": "アルティチューズ",
     "ALTITUDING": "アルティテューディング",
+    "ALTMAN": "アルトゥマン",
     "ALTO": "アルト",
     "ALTOCUMULUS": "アルトゥキューミュラス",
     "ALTOGETHER": "オールトゥギャザー",
