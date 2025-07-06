@@ -33641,6 +33641,7 @@ PHRASES = {
     "PLATELETS": "プレイトゥレッツ",
     "PLATEN": "プラテン",
     "PLATES": "プレイツ",
+    "PLATFORMIO": "プラットゥフォームアイオー",
     "PLATING": "プレイティング",
     "PLATINUM": "プラティナム",
     "PLATITUDE": "プラティテュードゥ",
