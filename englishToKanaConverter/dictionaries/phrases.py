@@ -10754,6 +10754,7 @@ PHRASES = {
     "COPIED": "コピードゥ",
     "COPIER": "コピアー",
     "COPIES": "コピーズ",
+    "COPILOT": "コパイロットゥ",
     "COPING": "コウピング",
     "COPIOUS": "コウピアス",
     "COPPER": "コパー",
