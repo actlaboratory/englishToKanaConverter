@@ -14354,6 +14354,7 @@ PHRASES = {
     "DOMINEERING": "ドマニーリング",
     "DOMING": "ドウミング",
     "DOMINGO": "ドミンゴ",
+    "DOMINIC": "ドミニク",
     "DOMINICA": "ドミニカ",
     "DOMINICAN": "ドミニカン",
     "DOMINION": "ドミニョン",
