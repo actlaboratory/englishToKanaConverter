@@ -45080,6 +45080,7 @@ PHRASES = {
     "TIFF": "ティフ",
     "TIFFANY": "ティファニー",
     "TIFFIN": "ティフィン",
+    "TIFLOTECNIA": "ティフロテクニア",
     "TIGER": "タイガー",
     "TIGERISH": "タイガリッシュ",
     "TIGGER": "ティガー",
