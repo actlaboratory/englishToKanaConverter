@@ -7806,6 +7806,7 @@ PHRASES = {
     "CEREMONIES": "セレモニイズ",
     "CEREMONIOUS": "セレモウニアス",
     "CEREMONY": "セレモニー",
+    "CERENCE": "セレンス",
     "CERESTAT": "セレスタットゥ",
     "CERISE": "セリース",
     "CERIUM": "シアリアム",
