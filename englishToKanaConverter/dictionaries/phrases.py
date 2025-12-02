@@ -32886,7 +32886,7 @@ PHRASES = {
     "PERIODICAL": "ピリオディカル",
     "PERIODICALLY": "ピリオディカリー",
     "PERIODONTAL": "ペリオウダンタル",
-    "PERIODS": "ピアリオズ",
+    "PERIODS": "ピリオズ",
     "PERIOPERATIVE": "ペリオペレイティヴ",
     "PERIOSTEAL": "ペリオスティール",
     "PERIOSTEUM": "ペリオスチュウム",
