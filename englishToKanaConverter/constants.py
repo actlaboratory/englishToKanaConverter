@@ -11,6 +11,7 @@ UPPER_IGNORE = (
     "GET",
     "PUT",
     "BES",
+    "BET",
     "OF",
     "RAM",
     "ROM",
@@ -34,6 +35,7 @@ UPPER_IGNORE = (
     "NOT",
     "IS",
     "RE",
+    "ARM",
 )
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
