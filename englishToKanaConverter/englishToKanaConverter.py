@@ -135,6 +135,10 @@ class EnglishToKanaConverter:
                 # 強制的にスペルアウト
                 self.log.debug(f"{target} must be spelled out")
                 converted = self._alphaToSpell(target)
+            # 単独のアポストロフィーは変換できたものとして扱う
+            if target == "'":
+                self.log.debug(f"single apostrophe found: {target}")
+                converted = "'"
             else:
                 # 普通に辞書引き
                 converted = dictionaries.PHRASES.get(targetUpper, "")
