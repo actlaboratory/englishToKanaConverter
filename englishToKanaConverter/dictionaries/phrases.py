@@ -39864,6 +39864,7 @@ PHRASES = {
     "SELLING": "セリング",
     "SELVAGE": "セルベッジ",
     "SELVAS": "セルバス",
+    "SELVASHC": "セルバスエイチシー",
     "SELVES": "セルブズ",
     "SELYE": "セリエ",
     "SEMANTIC": "セマンティック",

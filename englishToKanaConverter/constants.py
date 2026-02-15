@@ -118,4 +118,5 @@ MUST_SPELLED = (
     "OSW",
     "DTM",
     "API",
+    "BLV",
 )
