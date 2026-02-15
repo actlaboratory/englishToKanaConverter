@@ -136,7 +136,7 @@ class EnglishToKanaConverter:
                 self.log.debug(f"{target} must be spelled out")
                 converted = self._alphaToSpell(target)
             # 単独のアポストロフィーは変換できたものとして扱う
-            if target == "'":
+            elif target == "'":
                 self.log.debug(f"single apostrophe found: {target}")
                 converted = "'"
             else:
