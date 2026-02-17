@@ -1,8 +1,6 @@
-import json
 import logging
 import os
 import re
-import traceback
 from typing import List, Tuple
 
 from . import dictionaries
