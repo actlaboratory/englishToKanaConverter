@@ -158,7 +158,9 @@ class EnglishToKanaConverter:
                 self.log.debug(f"partsToKana out: success={success}, converted={converted}, remaining={remaining}")
                 return success, converted, remaining
             # 接尾語の確認
-            suffix = dictionaries.SUFFIX.get(remaining.upper(), "")
+            suffix = ""
+            if target != "'":
+                suffix = dictionaries.SUFFIX.get(remaining.upper(), "")
             if suffix:
                 # 接尾語が見つかった
                 self.log.debug(f"suffix {remaining} -> {suffix}")
