@@ -40154,7 +40154,7 @@ PHRASES = {
     "SEVENTY": "セブンティー",
     "SEVER": "セバー",
     "SEVERABILITY": "セバラビリティー",
-    "SEVERAL": "セベラル",
+    "SEVERAL": "セブラル",
     "SEVERALLY": "セベラリー",
     "SEVERANCE": "セビアランス",
     "SEVERE": "シビア",
