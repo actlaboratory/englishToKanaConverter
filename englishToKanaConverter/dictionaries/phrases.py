@@ -26971,6 +26971,7 @@ PHRASES = {
     "LOCALIZATION": "ローカリゼイション",
     "LOCALIZE": "ローカライズ",
     "LOCALIZED": "ロウカライズドゥ",
+    "LOCALIZER": "ロウカライザー",
     "LOCALIZES": "ロウカライジズ",
     "LOCALIZING": "ロウカライジング",
     "LOCALLY": "ローカリー",
