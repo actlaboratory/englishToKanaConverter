@@ -2490,6 +2490,7 @@ PHRASES = {
     "ANTHRACOSES": "アンスラコーシイズ",
     "ANTHRACOSIS": "アンスラコウシス",
     "ANTHRAX": "アンスラクス",
+    "ANTHROPIC": "アンスロピック",
     "ANTHROPOCENTRIC": "アンソロポセントゥリック",
     "ANTHROPOGENIC": "アンスロポージェニック",
     "ANTHROPOID": "アンスロポイドゥ",
