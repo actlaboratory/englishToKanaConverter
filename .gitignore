@@ -3,3 +3,4 @@ __pycache__
 test*.txt
 *.log
 failed.txt
+test/log.txt
