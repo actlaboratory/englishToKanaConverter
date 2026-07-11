@@ -1,8 +1,19 @@
 # 辞書データ
 
-from .phrases import PHRASES
-from .prefix import PREFIX
-from .roman import ROMAN
-from .spell import SPELL
-from .suffix import SUFFIX
-from .words import WORDS
+import json
+import os
+
+_DIR = os.path.dirname(__file__)
+
+
+def _load(name):
+    with open(os.path.join(_DIR, f"{name}.json"), encoding="utf-8") as f:
+        return json.load(f)
+
+
+PHRASES = _load("phrases")
+PREFIX = _load("prefix")
+ROMAN = _load("roman")
+SPELL = _load("spell")
+SUFFIX = _load("suffix")
+WORDS = _load("words")

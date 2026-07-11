@@ -1,42 +1,18 @@
+import json
+import os
+
+_CONST_DIR = os.path.join(os.path.dirname(__file__), "constants")
+
+
+def _loadList(name):
+    with open(os.path.join(_CONST_DIR, f"{name}.json"), encoding="utf-8") as f:
+        return tuple(json.load(f))
+
+
 # 大文字が連続する際にそれぞれを独立した単語として扱う最大数
 UPPER_MAX = 3
 # 読み下しが必要な大文字列
-UPPER_IGNORE = (
-    "FAX",
-    "ON",
-    "OFF",
-    "WEB",
-    "LAN",
-    "WAN",
-    "GET",
-    "PUT",
-    "BES",
-    "BET",
-    "OF",
-    "RAM",
-    "ROM",
-    "COM",
-    "DOS",
-    "JIS",
-    "END",
-    "THE",
-    "IN",
-    "OUT",
-    "NEW",
-    "ZIP",
-    "TEL",
-    "NEO",
-    "POP",
-    "FOR",
-    "AND",
-    "MAC",
-    "AND",
-    "OR",
-    "NOT",
-    "IS",
-    "RE",
-    "ARM",
-)
+UPPER_IGNORE = _loadList("upper_ignore")
 # ローマ字読みを試みる最小文字数
 ROMAN_MIN = 3
 # ローマ字読みで、連続しても促音として変換しない文字
@@ -105,19 +81,4 @@ ZENHAN_TABLE = {
     "’": "'",
 }
 # 必ずスペルアウトしなければならない文字列（読めたものとして扱われる）
-MUST_SPELLED = (
-    "GPT",
-    "APP",
-    "URL",
-    "PC",
-    "DIR",
-    "DEV",
-    "STR",
-    "STD",
-    "ISO",
-    "OK",
-    "OSW",
-    "DTM",
-    "API",
-    "BLV",
-)
+MUST_SPELLED = _loadList("must_spelled")
