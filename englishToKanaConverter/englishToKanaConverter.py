@@ -34,8 +34,8 @@ class EnglishToKanaConverter:
         self.log.debug(f"splitUpperCase in: {s}")
         ret = []
         self.log.debug("searching for upper case")
-        # 大文字を探す
-        result = re.finditer("[^A-Z]?([A-Z]+)", s)
+        # 大文字を探す（アポストロフィーを挟んだ大文字の連続も1つの大文字列として扱う）
+        result = re.finditer("[^A-Z]?([A-Z]+(?:'[A-Z]+)*)", s)
         result = list(result)
         # 文字の挿入時にインデックスが狂わないように後ろから処理する
         result.reverse()
