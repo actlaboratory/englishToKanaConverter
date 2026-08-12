@@ -30,6 +30,12 @@ class EnglishToKanaConverter:
         self.log.debug(f"zenToHan out: {s}")
         return s
 
+    def _removeDiacritics(self, s: str) -> str:
+        self.log.debug(f"removeDiacritics in: {s}")
+        s = s.translate(str.maketrans(DIACRITIC_TABLE))
+        self.log.debug(f"removeDiacritics out: {s}")
+        return s
+
     def _splitUpperCase(self, s: str) -> List[str]:
         self.log.debug(f"splitUpperCase in: {s}")
         ret = []
@@ -288,6 +294,7 @@ class EnglishToKanaConverter:
     def process(self, s: str, spellout: bool = True) -> str:
         self.log.debug(f"process in: {s}")
         s = self._zenToHan(s)
+        s = self._removeDiacritics(s)
         # 文字列を分割したリストに変換
         s = self._splitUpperCase(s)
         # リストの要素ごとにカナ変換

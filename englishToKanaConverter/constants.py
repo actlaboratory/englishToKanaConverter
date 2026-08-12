@@ -9,6 +9,11 @@ def _loadList(name):
         return tuple(json.load(f))
 
 
+def _loadDict(name):
+    with open(os.path.join(_CONST_DIR, f"{name}.json"), encoding="utf-8") as f:
+        return json.load(f)
+
+
 # 大文字が連続する際にそれぞれを独立した単語として扱う最大数
 UPPER_MAX = 3
 # 読み下しが必要な大文字列
@@ -80,5 +85,7 @@ ZENHAN_TABLE = {
     "Ｚ": "Z",
     "’": "'",
 }
+# アクセント記号付きラテン文字（é, ñ, øなど）を、対応する普通のアルファベットに変換するテーブル
+DIACRITIC_TABLE = _loadDict("diacritics")
 # 必ずスペルアウトしなければならない文字列（読めたものとして扱われる）
 MUST_SPELLED = _loadList("must_spelled")

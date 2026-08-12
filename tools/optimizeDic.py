@@ -63,6 +63,8 @@ if __name__ == "__main__":
         print(f"{os.path.basename(path)}を保存しました。")
 
     listFiles = glob.glob(os.path.join("englishToKanaConverter", "constants", "*.json"))
+    # diacritics.jsonは単語リストではなく生成物（tools/generateDiacriticsTable.py参照）のため対象外
+    listFiles = [path for path in listFiles if os.path.basename(path) != "diacritics.json"]
     for path in listFiles:
         print(f"{os.path.basename(path)}を処理しています。")
         optimizeWordList(path)
