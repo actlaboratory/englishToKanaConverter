@@ -8,7 +8,7 @@ import sys
 sys.path.append(os.getcwd())
 
 from englishToKanaConverter.constants import ZENHAN_TABLE
-from englishToKanaConverter import EnglishToKanaConverter
+from englishToKanaConverter import ConversionMode, EnglishToKanaConverter
 
 
 if __name__ == "__main__":
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         word = word.translate(str.maketrans(ZENHAN_TABLE))
         if not re.match("[A-Z']+$", word):
             continue
-        converted = c.process(word.lower(), False)
+        converted = c.process(word.lower(), ConversionMode.KEEP_UNREADABLE)
         if not re.search("[a-z']", converted):
             continue
         # 発音記号を削除

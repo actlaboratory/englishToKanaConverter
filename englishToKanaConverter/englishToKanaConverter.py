@@ -5,6 +5,7 @@ from typing import List, Tuple
 
 from . import dictionaries
 from .constants import *
+from .conversionMode import ConversionMode
 
 
 class EnglishToKanaConverter:
@@ -272,29 +273,46 @@ class EnglishToKanaConverter:
         self.log.debug(f"trimWhitespaceBetweenUpperCase out: {ret}")
         return ret
 
-    def _alphaToSpell(self, s: str) -> str:
+    def _alphaToSpell(self, s: str, separator: str = "") -> str:
         self.log.debug(f"alphaToSpell in: {s}")
-        # アルファベットを探す
+        # 結果の格納用
+        result = ""
+        # 未処理の文字列の先頭位置
+        index = 0
+        # アルファベットの連続を探す
         self.log.debug("searching for alphabets")
-        result = re.finditer("[a-zA-Z]", s)
-        result = list(result)
-        # 文字の挿入時にインデックスが狂わないように後ろから処理する
-        result.reverse()
-        for match in result:
-            char = match.group()
-            self.log.debug(f"found: {char}")
-            kana = dictionaries.SPELL.get(char.upper())
-            if kana is None:
-                self.log.error(f"unknown character: {char}")
-            self.log.debug(f"converted: {char} -> {kana}")
-            s = s[:match.start()] + kana + s[match.end():]
-        self.log.debug(f"alphaToSpell out: {s}")
-        return s
+        for match in re.finditer("[a-zA-Z]+", s):
+            # アルファベット以外の部分はそのまま
+            result += s[index:match.start()]
+            index = match.end()
+            self.log.debug(f"found: {match.group()}")
+            # 1文字ずつ読みに変換
+            kanaList = []
+            for char in match.group():
+                kana = dictionaries.SPELL.get(char.upper())
+                if kana is None:
+                    self.log.error(f"unknown character: {char}")
+                    kana = char
+                self.log.debug(f"converted: {char} -> {kana}")
+                kanaList.append(kana)
+            # 連続するアルファベットの間にだけ区切り文字を挿入する
+            result += separator.join(kanaList)
+        # 残った文字があれば追加
+        result += s[index:]
+        self.log.debug(f"alphaToSpell out: {result}")
+        return result
 
-    def process(self, s: str, spellout: bool = True) -> str:
-        self.log.debug(f"process in: {s}")
+    def process(self, s: str, mode: ConversionMode = ConversionMode.STANDARD) -> str:
+        if not isinstance(mode, ConversionMode):
+            raise TypeError(f"mode must be a ConversionMode, not {type(mode).__name__}")
+        self.log.debug(f"process in: {s} (mode: {mode.name})")
         s = self._zenToHan(s)
         s = self._removeDiacritics(s)
+        if mode == ConversionMode.SPELL_ALL:
+            # 辞書を使った変換は行わず、すべてのアルファベットをスペルアウト
+            s = self._alphaToSpell(s, SPELL_SEPARATOR)
+            self.log.debug(f"process out: {s}")
+            return s
         # 文字列を分割したリストに変換
         s = self._splitUpperCase(s)
         # リストの要素ごとにカナ変換
@@ -303,7 +321,7 @@ class EnglishToKanaConverter:
             s[i] = self._romanToKana(s[i])
         # リストを結合して元の状態に戻す
         s = self._trimWhitespaceBetweenUpperCase(s)
-        if spellout:
+        if mode == ConversionMode.STANDARD:
             # 変換できなかった箇所をスペルアウト
             s = self._alphaToSpell(s)
         self.log.debug(f"process out: {s}")

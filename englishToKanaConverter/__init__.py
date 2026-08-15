@@ -1,1 +1,2 @@
+from .conversionMode import ConversionMode
 from .englishToKanaConverter import EnglishToKanaConverter

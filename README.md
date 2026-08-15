@@ -43,6 +43,29 @@ text_converted = converter.process(text)
 print(text_converted)
 ```
 
+### 変換モード
+
+`process`メソッドの第2引数`mode`に`ConversionMode`を指定すると、変換のしかたを切り替えられます。省略した場合は`ConversionMode.STANDARD`になります。
+
+| モード | 説明 | `"hello world"`の変換結果 |
+| --- | --- | --- |
+| `ConversionMode.STANDARD` | 標準。変換できなかったアルファベットは、1文字ずつスペルアウトされます。 | `ハロー ワールドゥ` |
+| `ConversionMode.KEEP_UNREADABLE` | 変換できなかった単語を、スペルアウトせずに英語のまま残します。辞書のメンテナンス用の機能です。 | `ハロー ワールドゥ` |
+| `ConversionMode.SPELL_ALL` | すべての単語を強制的にスペルアウトし、文字と文字の間に半角スペースを挿入します。読み上げでの校正時に、英語かカタカナかを判別したり、単語のスペルを確認したりするためのモードです。 | `エイチ イー エル エル オー ダブリュー オー アール エル ディー` |
+
+```
+# モジュールのインポート
+from englishToKanaConverter import ConversionMode, EnglishToKanaConverter
+
+converter = EnglishToKanaConverter()
+# すべての単語をスペルアウトする
+print(converter.process("hello", ConversionMode.SPELL_ALL))
+```
+
+`mode`に`ConversionMode`以外の値を渡すと、`TypeError`が発生します。
+
+なお、以前のバージョンで使用できた`process`メソッドの`spellout`引数は廃止されました。`spellout=True`は`ConversionMode.STANDARD`（省略時と同じ）に、`spellout=False`は`ConversionMode.KEEP_UNREADABLE`に置き換えてください。
+
 ## 動作確認用プログラム
 
 コマンドラインで本リポジトリのトップに移動し、
@@ -53,6 +76,12 @@ python test/test.py
 
 を実行すると、本モジュールの動作確認が行えます。
 変換したい文字列を入力してEnterキーを押すと、変換結果が表示され、再度入力待ち状態になります。
+また、「1」「2」「3」のいずれかの数字だけを入力してEnterキーを押すと、変換モードが切り替わります。起動直後は「1」（標準）です。
+
+* 1: 標準
+* 2: 読めない単語を英語のまま残す
+* 3: すべての単語をスペルアウトする
+
 プログラムを終了するには、Ctrl+Cを押します。
 なお、本プログラムを使用すると、`test`ディレクトリ内に`log.txt`が作成され、ログが保存されます。
 

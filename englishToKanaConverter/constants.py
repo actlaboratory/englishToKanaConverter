@@ -89,3 +89,5 @@ ZENHAN_TABLE = {
 DIACRITIC_TABLE = _loadDict("diacritics")
 # 必ずスペルアウトしなければならない文字列（読めたものとして扱われる）
 MUST_SPELLED = _loadList("must_spelled")
+# すべての単語をスペルアウトするモードで、文字と文字の間に挿入する区切り文字
+SPELL_SEPARATOR = " "
