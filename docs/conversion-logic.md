@@ -4,7 +4,7 @@
 
 本ドキュメントは、`englishToKanaConverter/englishToKanaConverter.py`に実装されている英語文字列→カタカナ変換アルゴリズムの内部動作を解説するものである。
 
-辞書データ自体の形式（キー・値の制約、ファイル構成）についてはREADME.mdの「辞書のメンテナンス」節、およびJSON化の経緯については[issue15-dictionary-json-format.md](./issue15-dictionary-json-format.md)を参照。本ドキュメントは**アルゴリズム（どの辞書を、どういう順序で、どういう規則で使うか）**に焦点を当てる。
+辞書データ自体の形式（キー・値の制約、ファイル構成）についてはREADME.mdの「辞書のメンテナンス」節、JSON化の経緯については[issue15-dictionary-json-format.md](./issue15-dictionary-json-format.md)、複合語の読みをどう決めるかという言語的な方針については[dictionary-policy.md](./dictionary-policy.md)を参照。本ドキュメントは**アルゴリズム（どの辞書を、どういう順序で、どういう規則で使うか）**に焦点を当てる。
 
 対象読者は、変換結果が期待通りにならないケースを調査する開発者、および辞書のメンテナンス方針（どのファイルに何を追加すべきか）を判断する必要がある開発者を想定する。
 
